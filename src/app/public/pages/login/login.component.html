@@ -1,0 +1,28 @@
+<div id="container">
+    <div class="form-container">
+    <h1 class="title">Bienvenido a <span>Monify</span>!</h1>
+    <h2 class="subtitle">Iniciar sesión</h2>
+        <form #loginForm="ngForm" (ngSubmit)="login()">
+            <div class="inputBox">
+                <img class="inputIcon" src="../../../../assets/img/user.svg" alt="">
+                <input class="input" type="text" name="user" id="user" [(ngModel)]="loginData.username" #username="ngModel"
+                placeholder="Usuario" autocomplete="username"
+                required>
+            </div>
+            <div class="inputBox">
+                <img class="inputIcon" src="../../../../assets/img/lock.svg" alt="">
+                <input class="input" type="password" name="password" id="password" [(ngModel)]="loginData.password" #password="ngModel"
+                placeholder="Contraseña" autocomplete="password"
+                required>
+            </div>
+            <button type="submit" [disabled]="loginForm.invalid" >Iniciar sesión</button>
+            <p *ngIf="errorLogin()" class="error">Error al iniciar sesión</p    >
+            <p class="registerPara">No tenés cuenta? <a class="registerLink" [routerLink]="['/register']">Registrate</a> </p>
+            
+        </form>
+    </div>
+    <div class="background-container">
+        <img class="floatLogo" src="./../../../../assets/img/Monify_svg_white.svg" alt="">
+        <img class="spinner" src="./../../../../assets/animate/audio.svg" alt="cargando" *ngIf="cargando()">
+    </div>
+</div>

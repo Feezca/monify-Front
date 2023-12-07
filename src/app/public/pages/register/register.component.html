@@ -1,0 +1,36 @@
+<div id="container">
+    <div class="form-container">
+    <h2 class="subtitle">Registro de usuario</h2>
+        <form #registerForm="ngForm" (ngSubmit)="register()">
+            <div class="inputBox">
+                <img class="inputIcon" src="../../../../assets/img/user.svg" alt="">
+                <input class="input" type="text" name="user" id="user" [(ngModel)]="registerData.username" #username="ngModel"
+                placeholder="Usuario" autocomplete="username"
+                required>
+            </div>
+            <div class="inputBox">
+                <img class="inputIcon" src="../../../../assets/img/@.svg" alt="">
+                <input class="input" type="text" name="email" id="email" [(ngModel)]="registerData.email" #email="ngModel"
+                placeholder="Email" autocomplete="email"
+                required>
+            </div>
+            <div class="inputBox">
+                <img class="inputIcon" src="../../../../assets/img/lock.svg" alt="">
+                <input class="input" type="password" name="password" id="password" [(ngModel)]="registerData.password" #password="ngModel"
+                placeholder="Contraseña" autocomplete="password"
+                required>
+            </div>
+            <div class="inputBox">
+                <img class="inputIcon" src="../../../../assets/img/lock.svg" alt="">
+                <input class="input" type="password" name="password" id="password" [(ngModel)]="registerData.password" #password="ngModel"
+                placeholder="Confirmar contraseña" autocomplete="Confirmar contraseña"
+                required>
+            </div>
+            <button type="submit" [disabled]="registerForm.invalid" >Registrarme</button>
+            <p class="registerPara">Ya tenés tu cuenta? <a class="registerLink" [routerLink]="['/login']">Iniciar sesión</a> </p>
+        </form>
+    </div>
+    <div class="background-container">
+        <img class="floatLogo" src="./../../../../assets/img/Monify_svg_white.svg" alt="">
+    </div>
+</div>

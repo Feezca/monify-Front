@@ -1,0 +1,63 @@
+@use "../../../../assets/styles/variables.scss";
+
+.container{
+    display: flex;
+    width: 100vw;
+    flex-direction: row;
+    height: 100vh;
+}
+@media(width<750px){
+    .container{
+        flex-direction: column;
+        margin-left: 25vw;
+    }
+}
+.item, .item2{
+    width: 50vw;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+        height: 400px;
+        display: flex;
+    }
+}
+.item2{
+    display: flex;
+    flex-direction: column;
+    
+}
+button{
+    width: 498px;
+    height: 51px;
+    flex-shrink: 0;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+.signIn{
+    background: variables.$colorPrincipal;
+    color: #ededed;
+    border: none;
+}
+
+.signIn:hover{
+    background: variables.$colorPrincipalAcentuado;
+    transition: .3s;
+}
+.signUp{
+    border: 2px solid variables.$colorTerciario;
+}
+.signUp:hover{
+    border: 4px solid variables.$colorTerciario;
+    transition: .2s;
+}
+p{
+    font-size: 1.5rem;
+}
+a{
+    text-decoration: none;
+    color: variables.$colorSecundario;
+}
