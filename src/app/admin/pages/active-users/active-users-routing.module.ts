@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ActiveUsersModule } from './active-users.module';
 
 const routes: Routes = [{
-  path:'',
+  path:"",
   component:ActiveUsersModule
 }];
 
