@@ -1,2 +1,98 @@
 @use "../../../../assets/styles/variables.scss";
 @use "../../../../assets/styles/forms.scss";
+
+// aside 
+.aside-container{
+    width: 22vw;
+    height: 100vh;
+    background: linear-gradient(180deg, #04B536 0%, rgba(251, 251, 251, 0.00) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+img{
+    width: 3vw;
+}
+.logo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 15px;
+    position: relative;
+}
+.title-logo{
+    font-size: 2rem ;
+    color: variables.$colorSecundario;
+    margin-left:10px ;
+}
+button{
+    background: variables.$colorPrincipal;
+    box-shadow: 10px 10px 10px 0px rgba(251, 251, 251, 0.25);
+    width: 200px;
+    height: 3.5rem;
+    color: variables.$colorSecundario;
+    font-size: 1.2rem;
+    border-radius: 4px;
+}
+button:hover{
+    cursor: pointer;
+    background-color: variables.$colorPrincipalAcentuado;
+}
+
+.admin-aside{
+    font-size: .8rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+.enlace{
+    text-decoration: none;
+    height: 3rem;
+    width: 15rem;
+    border-radius: 0px 25px 0px 0px;
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+}
+span{
+    color:rgba(21, 73, 117, 0.45);
+    margin-left: 1rem;
+}
+.icon{
+    opacity: .6;
+}
+.enlace:hover{
+    background-color: variables.$colorPrincipalAcentuado;
+    font-size: .8rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+.enlace-activo{
+    background-color: variables.$colorPrincipalAcentuado;
+    font-size: .8rem;
+    font-weight: bold;
+    span,.icon{
+        color: variables.$colorTerciario;
+        opacity: 1;
+    }
+}
+// dashboard screen
+.dashboardScreen{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 1.5rem;
+    padding-left: 1rem;
+}
+.floatlogo{
+    position: absolute;
+    right: -40px;
+    top: -40px;
+    z-index: 1000;
+}
+h2{
+    font-size: 2rem;
+}

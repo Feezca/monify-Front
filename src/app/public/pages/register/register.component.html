@@ -4,26 +4,20 @@
         <form #registerForm="ngForm" (ngSubmit)="register()">
             <div class="inputBox">
                 <img class="inputIcon" src="../../../../assets/img/user.svg" alt="">
-                <input class="input" type="text" name="user" id="user" [(ngModel)]="registerData.username" #username="ngModel"
+                <input class="input" type="text" name="user" id="user" [(ngModel)]="registerData.Username" #username="ngModel"
                 placeholder="Usuario" autocomplete="username"
                 required>
             </div>
             <div class="inputBox">
                 <img class="inputIcon" src="../../../../assets/img/@.svg" alt="">
-                <input class="input" type="text" name="email" id="email" [(ngModel)]="registerData.email" #email="ngModel"
+                <input class="input" type="text" name="email" id="email" [(ngModel)]="registerData.Email" #email="ngModel"
                 placeholder="Email" autocomplete="email"
                 required>
             </div>
             <div class="inputBox">
                 <img class="inputIcon" src="../../../../assets/img/lock.svg" alt="">
-                <input class="input" type="password" name="password" id="password" [(ngModel)]="registerData.password" #password="ngModel"
+                <input class="input" type="password" name="password" id="password" [(ngModel)]="registerData.Password" #password="ngModel"
                 placeholder="Contraseña" autocomplete="password"
-                required>
-            </div>
-            <div class="inputBox">
-                <img class="inputIcon" src="../../../../assets/img/lock.svg" alt="">
-                <input class="input" type="password" name="password" id="password" [(ngModel)]="registerData.password" #password="ngModel"
-                placeholder="Confirmar contraseña" autocomplete="Confirmar contraseña"
                 required>
             </div>
             <button type="submit" [disabled]="registerForm.invalid" >Registrarme</button>

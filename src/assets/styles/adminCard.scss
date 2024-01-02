@@ -1,0 +1,68 @@
+@use './variables.scss';
+
+.card{
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px;
+    border-radius: 10px;
+    background-color: variables.$colorSecundario;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    margin: 5px;
+}
+
+.symbolCircle{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: variables.$colorTerciario;
+    color: variables.$colorSecundario;
+}
+p{
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: variables.$colorTerciario;
+    font-weight: 600;
+}
+input{
+    background-color: #d9d9d9;
+    border: none;
+    height: 2rem;
+    text-align: center;
+}
+.dataInput{
+    font-size: 1rem;
+    color: #0c0c0c;
+    font-weight: 900;
+
+}
+.btnSubmit{
+    border-radius: 10px;
+    color: variables.$colorSecundario;
+    background-color: variables.$colorTerciario;
+    height: 2rem;
+    border: none;
+    width: 100px;
+    margin: 0px 5px;
+    cursor: pointer;
+}
+.btnSubmit:hover{
+    background-color: variables.$colorTerciarioAcentuado;
+}
+.btnDelete{
+    border-radius: 10px;
+    margin: 0px 5px;
+    height: 2rem;
+    width: 100px;
+    border: 2px solid variables.$colorTerciario;
+    color: variables.$colorTerciario;
+    cursor: pointer;
+}
+.btnDelete:hover{
+    background-color: #c1bcbc;
+}

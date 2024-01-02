@@ -38,6 +38,9 @@ async login(loginData:LoginData){
 async register(registerData: RegisterData){
   const res = await fetch(API+"User", {
     method: "POST",
+    headers: {
+      "Content-Type":"application/json"
+    },
     body: JSON.stringify(registerData)
   });
   console.log("REGISTRANDO",res)

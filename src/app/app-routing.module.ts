@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path:"home",
-    // canActivate:[loggedUser],
+    canActivate:[LoggedUser],
     loadChildren: () => import('./public/pages/home/home.module').then(m => m.HomeModule)
   },    
   {
@@ -25,26 +25,6 @@ const routes: Routes = [
     // canActivate:[loggedAdmin],
     loadChildren: () => import('./admin/pages/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
-  {
-    path:"monedas",
-    // canActivate:[loggedAdmin],
-    loadChildren: () => import('./admin/pages/monedas/monedas.module').then(m => m.MonedasModule)
-    },
-  {
-    path:"users",
-    // canActivate:[loggedAdmin],
-    loadChildren: () => import('./admin/pages/users/users.module').then(m => m.UsersModule)
-    },
-  {
-    path:"active",
-    // canActivate:[loggedAdmin],
-    loadChildren: () => import('./admin/pages/active-users/active-users.module').then(m => m.ActiveUsersModule)
-    },
-  {
-    path:"expired",
-    // canActivate:[loggedAdmin],
-    loadChildren: () => import('./admin/pages/expired-users/expired-users.module').then(m => m.ExpiredUsersModule)
-    },
   { 
     path: "",
     redirectTo: 'login',

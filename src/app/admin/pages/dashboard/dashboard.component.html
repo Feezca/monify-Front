@@ -1,4 +1,31 @@
 <body id="container">
-    <app-aside></app-aside>
-    <img class="floatLogo" src="./../../../../assets/img/Monify_svg_white.svg" alt="">
+    <aside class="aside-container">
+        <div class="logo">
+            <img src="../../../../assets/img/Monify_svg_white.svg" alt="">
+            <span class="title-logo">Monify</span>
+        </div>
+            <div class="admin-aside">
+                <div class="enlace" [class.enlace-activo]="enlaceActivo === 'Monedas'"  (click)="selectedLink('Monedas')">
+                    <img class="icon" src="../../../../assets/img/coins.svg" alt=""><span>Monedas</span>
+                </div>
+                <div class="enlace" [class.enlace-activo]="enlaceActivo === 'Usuarios'"  (click)="selectedLink('Usuarios')">
+                    <img class="icon" src="../../../../assets/img/multiple-users.svg" alt=""><span>Usuarios</span>
+                </div>
+                <div class="enlace" [class.enlace-activo]="enlaceActivo === 'Activas'"  (click)="selectedLink('Activas')">
+                    <img class="icon" src="../../../../assets/img/user-check.svg" alt=""><span>Suscripciones activas</span>
+                </div>
+                <div class="enlace" [class.enlace-activo]="enlaceActivo === 'Vencidas'"  (click)="selectedLink('Vencidas')">
+                    <img class="icon" src="../../../../assets/img/user-block.svg" alt=""><span>Suscripciones vencidas</span>
+                </div>
+            </div>
+        <button type="submit" [routerLink]="['']">Guardar y salir</button>
+    </aside>  
+    <section class="dashboardScreen">
+        <h2>Dashboard Admin</h2>
+        <img class="floatLogo" src="./../../../../assets/img/Monify_svg_white.svg" alt="">
+        <app-expired-users *ngIf="enlaceActivo === 'Vencidas'"></app-expired-users>
+        <app-users *ngIf="enlaceActivo ==='Usuarios'"></app-users>
+        <app-active-users *ngIf="enlaceActivo === 'Activas'"></app-active-users>
+        <app-currencies *ngIf="enlaceActivo === 'Monedas'"></app-currencies>
+    </section>
 </body>

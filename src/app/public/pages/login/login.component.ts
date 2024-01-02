@@ -9,27 +9,23 @@ import { AuthService } from 'src/app/core/services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  private _authService = inject(AuthService);
-  public get authService() {
-    return this._authService;
-  }
-  public set authService(value) {
-    this._authService = value;
-  }
+  
+  authService = inject(AuthService);
   router = inject(Router);
+
   errorLogin = signal(false);
   cargando = signal(false);
   
   loginData: LoginData= {
-    username:"",
-    password: ""
+    Username:"",
+    Password: ""
   }
 
   login(){
     this.errorLogin.set(false);
     this.cargando.set(true);
     this.authService.login(this.loginData).then(res => {
-      if(res) this.router.navigate(["/contacts"]);
+      if(res) this.router.navigate(["/home"]);
       else {
         this.errorLogin.set(true)
       };

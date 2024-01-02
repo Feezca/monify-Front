@@ -1,0 +1,38 @@
+<form class="card" (ngSubmit)="createCurrency()" #form="ngForm">
+    <div class="symbol">
+        <label for="symbol">Sym: </label>
+        <input 
+        type="text"
+        [(ngModel)]="newCurrency.symbol"
+        #symbol="ngModel"
+        name="symbol"
+        value="sym"
+        >
+    </div>
+    <div class="name"> 
+        <label for="name">Moneda: </label>
+        <input 
+        type="text"
+        [(ngModel)]="newCurrency.name"
+        #name="ngModel"
+        name="name"
+        >
+    </div>
+    <div class="convertibility">
+        <label for="convertibilityIndex">IC: </label>
+        <input 
+        type="number"
+        [(ngModel)]="newCurrency.convertibilityIndex"
+        #convertibilityIndex="ngModel"
+        value="u$s"
+        name="convertibilityIndex"
+        >
+    </div>
+    <div class="agregar">
+        <button 
+        type="submit" 
+        value="Agregar"
+        class="btnSubmit"
+        >Agregar</button>
+    </div>
+</form>

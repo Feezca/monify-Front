@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="headersConversor">
+        <p class="titleConversor">Conversor</p>
+    </div>
+    <div class="conversor">
+        <div class="monto">
+            <label>Moneda de ingreso</label>
+            <div class="ingresoMoneda">  
+                <select id="opcionesDropdown"  (change)="seleccionarMonedaOrigen($event)" name="opcionesDropdown">
+                    <option>--Moneda--</option>
+                    <option *ngFor="let currency of currencies" [value]="currency.convertibilityIndex">{{ currency.name }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="monto">
+            <label for="opcionesDropdown">Moneda de egreso</label>
+            <div class="ingresoMoneda">
+                <select id="opcionesDropdown"   (change)="seleccionarMonedaDestino($event)" name="opcionesDropdown">
+                    <option>--Moneda--</option>
+                    <option *ngFor="let currency of currencies" [value]="currency.convertibilityIndex">{{ currency.name }}</option>
+                </select>
+            </div>
+        </div>
+        <label for="moneda1">Monto</label>
+        <div class="salidas">
+            <div class="valores">
+                <p class="peso">$</p>
+                <input type="number" id="moneda1" [(ngModel)]="valorAConvertir"/>   
+            </div>  
+            <div class="valores">
+                <p class="peso">$</p>
+                <div class="input valorConvertido" type="number" id="moneda2">{{valorConvertido}}</div>
+            </div>  
+        </div>
+    </div>
+    <button type="submit" (click)="convert()">Convertir</button>
+</div>

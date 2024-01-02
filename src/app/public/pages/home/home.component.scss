@@ -1,0 +1,29 @@
+@use "./../../../../assets/styles/variables.scss";
+
+.home{
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+h1{
+    color: variables.$colorTerciario;
+}
+#container{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    background: linear-gradient(241deg, #04B536 21.57%, rgba(217, 217, 217, 0.00) 100%);
+    height: 98vh;
+    overflow: hidden;
+    position: relative;
+}
+.floatLogo{
+    width: 40%;
+    opacity: .5;
+    transform: rotate(-27.83deg);
+    position: absolute;
+    right: -40px;
+    top: -40px;
+}

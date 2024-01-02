@@ -5,13 +5,13 @@
         <form #loginForm="ngForm" (ngSubmit)="login()">
             <div class="inputBox">
                 <img class="inputIcon" src="../../../../assets/img/user.svg" alt="">
-                <input class="input" type="text" name="user" id="user" [(ngModel)]="loginData.username" #username="ngModel"
+                <input class="input" type="text" name="user" id="user" [(ngModel)]="loginData.Username" #username="ngModel"
                 placeholder="Usuario" autocomplete="username"
                 required>
             </div>
             <div class="inputBox">
                 <img class="inputIcon" src="../../../../assets/img/lock.svg" alt="">
-                <input class="input" type="password" name="password" id="password" [(ngModel)]="loginData.password" #password="ngModel"
+                <input class="input" type="password" name="password" id="password" [(ngModel)]="loginData.Password" #password="ngModel"
                 placeholder="Contraseña" autocomplete="password"
                 required>
             </div>

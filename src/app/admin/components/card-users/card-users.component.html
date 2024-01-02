@@ -1,0 +1,19 @@
+<div class="card">
+    <p class="data">
+        <span class="label">Usuario:{{user.Username}}</span> 
+    </p>
+    <p class="data">
+        <span class="label">Conv{{user.Conversions}}</span>: 
+    </p>
+    <p class="data">
+        <span class="label">email:{{user.Email}}</span> 
+    </p>
+    <p class="data">
+        <span class="label">Plan:{{user.Plan}}</span> 
+    </p>
+    <form (ngSubmit)="saveUser()" #form="ngForm">
+        <input  class="dataInput" [(ngModel)]="user.State" #State="ngModel" type="text" name="State" value="{{user.State}}">
+        <button type="button" (click)="editUserState()" class="btnDelete">Cambiar</button>
+        <button type="submit" value="Guardar" class="btnSubmit" >Guardar</button>
+    </form>
+</div>

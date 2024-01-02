@@ -1,13 +1,20 @@
-export interface RegisterData extends User {
-    password: string
+export interface RegisterData{
+    Username: string,
+    Email:string,
+    Password: string
 }
 
 export interface User{
-    username: string,
-    email:string
+    Id: number,
+    Username: string,
+    Email:string,
+    Conversions:number,
+    Plan:number,
+    State:number,
+    Role: string
 }
 
 export interface LoginData {
-    username: string,
-    password: string
+    Username: string,
+    Password: string
 }

@@ -16,9 +16,9 @@ export class RegisterComponent {
   cargando = signal(false)
 
   registerData: RegisterData = {
-    username:"",
-    email:"",
-    password:""
+    Username:"",
+    Email:"",
+    Password:""
   }
 
   async register(){
