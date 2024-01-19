@@ -5,14 +5,21 @@ export interface RegisterData{
 }
 
 export interface User{
-    Id: number,
-    Username: string,
-    Email:string,
-    Conversions:number,
-    Plan:number,
-    State:number,
-    Role: string
+    id: number,
+    username: string,
+    email:string,
+    conversions:number,
+    plan:number,
+    state:number,
+    role: string
 }
+
+export interface updateUserPlan{
+    id:number,
+    conversions: number,
+    plan:number
+}
+
 
 export interface LoginData {
     Username: string,

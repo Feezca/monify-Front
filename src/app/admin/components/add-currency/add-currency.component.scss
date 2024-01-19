@@ -1,1 +1,53 @@
-@use "../../../../assets/styles/adminCard.scss"
+@use "../../../../assets/styles/adminCard.scss";
+
+.card{
+    @media(width<830px){
+        height: 120px;
+        flex-direction: row;
+        width: 95vw;
+    }
+}
+
+.container2,.container3{
+    @media(width<679px){
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 45vw;
+    }
+    @media(width>=830px){
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 90%;
+    }
+}
+.symbol,.name,.convertibility,.agregar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    @media(width>=830px){
+        justify-content: space-around;
+    }
+}
+.agregar{
+    justify-content: center;
+    .btnSubmit{
+        width: 80%;
+        @media(width>=830px){
+            width: 18vw;
+        }
+        @media(width>1000px){
+            width: 10vw;
+        }
+        @media(width>1060px){
+            width: 14vw;
+        }
+    }
+}
+label{   
+    font-weight: 600;
+    text-decoration: underline;
+}

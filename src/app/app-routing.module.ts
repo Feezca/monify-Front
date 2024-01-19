@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoggedUser } from './core/guards/loggedUser';
+import { adminGuard } from './core/guards/admin.guard';
+// import { LoggedAdmin } from './core/guards/loggedAdmin';
 
 const routes: Routes = [
   {
@@ -22,13 +24,8 @@ const routes: Routes = [
   },    
   {
     path:"admin",
-    // canActivate:[loggedAdmin],
+    canActivate:[LoggedUser,adminGuard],
     loadChildren: () => import('./admin/pages/dashboard/dashboard.module').then(m => m.DashboardModule)
-  },
-  { 
-    path: "",
-    redirectTo: 'login',
-    pathMatch: "full"
   },
   {
     path:"**",

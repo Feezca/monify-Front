@@ -18,7 +18,7 @@
                     <img class="icon" src="../../../../assets/img/user-block.svg" alt=""><span>Suscripciones vencidas</span>
                 </div>
             </div>
-        <button type="submit" [routerLink]="['']">Guardar y salir</button>
+        <button type="submit" (click)="logOut()" [routerLink]="['']">Guardar y salir</button>
     </aside>  
     <section class="dashboardScreen">
         <h2>Dashboard Admin</h2>
@@ -27,5 +27,6 @@
         <app-users *ngIf="enlaceActivo ==='Usuarios'"></app-users>
         <app-active-users *ngIf="enlaceActivo === 'Activas'"></app-active-users>
         <app-currencies *ngIf="enlaceActivo === 'Monedas'"></app-currencies>
+        <button [routerLink]="['/home']">Ir al conversor</button>
     </section>
 </body>

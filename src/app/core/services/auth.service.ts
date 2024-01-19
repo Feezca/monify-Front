@@ -2,6 +2,7 @@ import { Injectable, WritableSignal, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginData, RegisterData } from '../interfaces/user';
 import { API } from '../constants/api';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,6 @@ async login(loginData:LoginData){
     })
     if(!res.ok) return false;
     const tokenRecibido = await res.text()
-    console.log("LOGUEANDO",tokenRecibido)
     localStorage.setItem("token",tokenRecibido);
     this.token.set(tokenRecibido);
     return true;
@@ -51,20 +51,19 @@ async register(registerData: RegisterData){
     this.token.set(null);
     localStorage.removeItem("token");
     this.router.navigate(["/"]);
-  }
+  };
 
-  isAdmin(){
-    if (!this.token) {
-      return false;
-  }
-return true
-  // Obtén el payload del token JWT
-  const payload = this.token;
-  // const payloadDesfragmentado= payload.split('.')[1]
-  // const decodedPayload = JSON.parse(atob(payload));
 
-  // // Verifica si el usuario es administrador
-  // return decodedPayload.role === 'admin';
-  }
+
+
+  decodedToken(token:string ):any{
+      try{
+        const decoded=jwtDecode(token);
+        return decoded;
+      }catch(error){
+        console.log('error al decodificar el token',error);
+        return null;
+      }
+  };
+
 }
-

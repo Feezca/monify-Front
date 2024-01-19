@@ -1,7 +1,10 @@
-import { Component, OnInit, inject } from '@angular/core';
+import {  Component, OnInit, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { Currency } from 'src/app/core/interfaces/currency';
 import { User } from 'src/app/core/interfaces/user';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { CurrencyService } from 'src/app/core/services/currency.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -11,16 +14,22 @@ import { CurrencyService } from 'src/app/core/services/currency.service';
 export class HomeComponent implements OnInit {
 
   user:User={
-    Id: 0,
-    Username: "",
-    Email:"",
-    Conversions:0,
-    Plan:0,
-    State:0,
-    Role: ""
-
+    id: 0,
+    username: '',
+    email:'',
+    conversions:0,
+    plan:0,
+    state:0,
+    role: ''
   }
-  currencyService= inject(CurrencyService)
+
+
+  enlaceActivo : string = 'Conversor';
+
+  selectedLink(enlace: string): void {
+    this.enlaceActivo = enlace;
+  }
+  
   currencies : Currency[]=[]
   
   currency: Currency= {
@@ -29,10 +38,44 @@ export class HomeComponent implements OnInit {
     convertibilityIndex:0,
     symbol:''
   }
+  // Inyecciones de servicios 
+  auth=inject(AuthService);
+  router=inject(Router);
+  currencyService= inject(CurrencyService);
+  userService = inject(UserService);
+  
+  logOut(){
+      this.auth.logOut()
+      localStorage.removeItem("token");
+      this.router.navigate([''])
+  }
 
+
+  selectComponent(e:any){
+
+    const option = e.target.value;
+
+    if(option === "Cerrar sesión"){
+      this.logOut();
+    }else if (option === "Mi cuenta" && this.enlaceActivo !== 'Cuenta') {
+      this.enlaceActivo = 'Cuenta';
+  } else if (option === 'Conversor' && this.enlaceActivo !== 'Conversor') {
+      this.enlaceActivo = 'Conversor';
+  }
+  }
   ngOnInit(): void {
     this.currencyService.getAll().then(res =>{
-      this.currencies=res
+      this.currencies=res;
+
+    this.userService.getById(this.user.id).then(resUser =>{
+      if (resUser) {
+        // Asignar los datos obtenidos de la API al objeto user 
+        console.log(resUser)
+        this.user = resUser;
+      } else {
+        console.error('Error: El usuario no fue encontrado.');
+      }
+    })  
     })
 
     const token = localStorage.getItem('token');
@@ -42,7 +85,8 @@ export class HomeComponent implements OnInit {
       const tokenData = this.parseJwt(token);
 
       // Extraer el nombre de usuario del token y asignarlo a la propiedad user.Username
-      this.user.Username = tokenData.given_name; 
+      this.user.username = tokenData.given_name; 
+      this.user.id = tokenData.sub;
     }
   }
   

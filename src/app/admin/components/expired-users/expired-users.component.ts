@@ -24,7 +24,7 @@ export class ExpiredUsersComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getAll().then(res => {
       this.users = res;
-      this.expiredUsers = this.users.filter(user => user.State === 1);
+      this.expiredUsers = this.users.filter(user => user.state === 1);
     })
   }
 

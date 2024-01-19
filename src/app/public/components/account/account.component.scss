@@ -1,0 +1,57 @@
+@use "../../../../assets/styles/adminCard.scss";
+@use "../../../../assets/styles/variables.scss";
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    background-color: variables.$colorSecundario;
+    border-radius: 10px;
+    box-shadow: 20px 20px 20px 0px rgba(0, 0, 0, 0.25);
+}
+h2{
+    color: variables.$colorTerciario;
+}
+.items{
+    text-transform: none;
+    font-size: 1rem;
+}
+.usersInfo{
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.btnRenovar{
+    border-radius: 10px;
+    margin: 10px 5px;
+    height: 40px;
+    font-size: 1rem;
+    width: 160px;
+    border: 2px solid variables.$colorTerciario;
+    color: variables.$colorTerciario;
+    cursor: pointer;
+}
+.btnSaveOut{
+    background-color: variables.$colorPrincipal;
+    color: variables.$colorSecundario;
+    width: 140px;
+    font-size: 1rem;
+    height: 40px;
+    margin: 10px;
+    border: none;
+}
+.renovaciones{
+    display: flex;
+    flex-direction: row;
+}
+@media(width<860px){
+    .renovaciones{
+        flex-direction: column;
+    }
+}
+@media(width<760px){
+    .container{
+        width: 60vw;
+    }
+}

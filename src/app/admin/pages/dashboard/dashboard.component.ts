@@ -1,4 +1,6 @@
 import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,7 +8,9 @@ import { Component, inject } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-
+  
+  auth=inject(AuthService)
+  router=inject(Router)
   
   enlaceActivo: string = 'Monedas'; 
   
@@ -14,5 +18,10 @@ export class DashboardComponent {
     this.enlaceActivo = enlace;
   }
 
+  logOut(){
+    this.auth.logOut()
+    localStorage.removeItem("token");
+    this.router.navigate([''])
+  }
   
 }

@@ -1,19 +1,25 @@
 <div class="card">
-    <p class="data">
-        <span class="label">Usuario:{{user.Username}}</span> 
-    </p>
-    <p class="data">
-        <span class="label">Conv{{user.Conversions}}</span>: 
-    </p>
-    <p class="data">
-        <span class="label">email:{{user.Email}}</span> 
-    </p>
-    <p class="data">
-        <span class="label">Plan:{{user.Plan}}</span> 
-    </p>
-    <form (ngSubmit)="saveUser()" #form="ngForm">
-        <input  class="dataInput" [(ngModel)]="user.State" #State="ngModel" type="text" name="State" value="{{user.State}}">
-        <button type="button" (click)="editUserState()" class="btnDelete">Cambiar</button>
-        <button type="submit" value="Guardar" class="btnSubmit" >Guardar</button>
-    </form>
+    <div class="container2">
+        <p class="data">
+            <span class="label"><h4>Usuario: </h4>{{user.username}}</span> 
+        </p>
+        <p class="data">
+            <span class="label"><h4>Conv: </h4>{{user.conversions}}</span>
+        </p>
+        <p class="data">
+            <span class="label"><h4>email: </h4>{{user.email}}</span> 
+        </p>
+        <p class="data">
+            <span class="label"><h4>Plan: </h4>{{user.plan===0? 'Free' : (user.plan === 1 ? 'Trial' : 'Pro')}}</span> 
+        </p>
+    </div>
+    <div class="container2">
+        <form (ngSubmit)="saveUser()" #form="ngForm">
+            <input  class="dataInput"  [(ngModel)]="user.state" #State="ngModel" type="text" name="State" value="">{{user.state === 0 ? 'Activo' : 'Inactivo'}}
+        </form>
+    
+            <button type="button" (click)="editUserState()" class="btnDelete">Cambiar</button>
+            <button type="submit" value="Guardar" class="btnSubmit" >Guardar</button>
+
+    </div>
 </div>

@@ -23,7 +23,7 @@ export class ActiveUsersComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getAll().then(res => {
       this.users = res;
-      this.activeUsers = this.users.filter(users => users.State === 0);
+      this.activeUsers = this.users.filter(users => users.state === 0);
     })
   }
 }

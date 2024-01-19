@@ -1,16 +1,19 @@
 <div class="card">
-    <span class="symbolCircle">
-        {{currency.symbol}}
-    </span>
-    <p>
-        {{currency.name}}
-    </p>
-    <form (ngSubmit)="editCurrencyIc()" #form="ngForm">
-        <input  class="dataInput" [(ngModel)]="currency.convertibilityIndex" #convertibilityIndex="ngModel" name="convertibilityIndex" type="text" value="{{currency.convertibilityIndex}}">
+    <div class="container2">
+        <div class="container3">
+            <span class="symbolCircle">
+                {{currency.symbol}}
+            </span>
+            <p>
+                {{currency.name}}
+            </p>
+            <form (ngSubmit)="editCurrencyIc()" #form="ngForm">
+                <input  class="dataInput" [(ngModel)]="currency.convertibilityIndex" #convertibilityIndex="ngModel" name="convertibilityIndex" type="text" value="{{currency.convertibilityIndex}}">
+            </form>
+        </div>
+    </div>
+    <div class="container4">
         <button type="submit" value="Guardar" class="btnSubmit">Guardar</button>
         <button (click)="deleteCurrency()" class="btnDelete" >Eliminar</button>
-    </form>
-</div>
-<div >
-
+    </div>
 </div>

@@ -21,11 +21,11 @@ export class CardUsersComponent {
   @Input({required:true}) user!:User;
 
   // estado:number = this.user.State
-
+  
   editUserState(){
-    this.user.State = this.user.State === 0 ? 1: 0 ;
+    this.user.state = this.user.state === 0 ? 1: 0 ;
   }  
   async saveUser(){
-      const res = await this.userService.edit(this.user)
+      await this.userService.updatePlan(this.user)
   }
 }

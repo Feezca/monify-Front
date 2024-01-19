@@ -20,13 +20,13 @@ export class UsersComponent implements OnInit{
   users: User[] = [];
   
   user : User ={
-    Id: 0,
-    Username: "",
-    Email: "",
-    Conversions: 0,
-    Plan: 0,
-    State: 0,
-    Role:""
+    id: 0,
+    username: "",
+    email: "",
+    conversions: 0,
+    plan: 0,
+    state: 0,
+    role:""
   }
 
   ngOnInit(): void {
