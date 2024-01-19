@@ -33,32 +33,28 @@ suscription(){
 
 }
 
-async updatePlan(){
+async setPlan(selectedPlan:number){
   try{
-    this.userUpdater.conversions=0;
-    const res=await this.userService.updatePlan(this.userUpdater);
-    if(res){
-      alert('Se ha actualizado el plan correctamente.');
-      location.reload();
-    }
-    return res;
-  }catch(error){
-    console.error('Error al actualizar el plan',error);
-    return false;
-  }
-}
-
-async upgradePlan(){
-  try{
-    if (this.user.plan < 2) {
-      this.userUpdater.plan=this.user.plan+1;
-      console.log(this.userUpdater);
-      await this.userService.updatePlan(this.userUpdater);
-      alert('Se ha mejorado el plan.');
-      location.reload();
-    } else {
-      alert('Tienes la máxima suscripción.');
-    }
+    switch (selectedPlan) {
+      case 0:
+        this.userUpdater.plan = 0 ;
+        this.userUpdater.conversions = 10;
+        break;
+        case 1:
+          this.userUpdater.plan = 1 ;
+          this.userUpdater.conversions = 20;
+          break;
+          case 2:
+            this.userUpdater.plan = 2 ;
+            this.userUpdater.conversions = 25000;
+        break;
+    
+      default:
+        break;
+    }      
+    console.log(this.userUpdater);
+    await this.userService.updatePlan(this.userUpdater);
+    alert('Se ha mejorado el plan.');
   } catch (error) {
     console.error('Error al mejorar el plan:', error);
   }

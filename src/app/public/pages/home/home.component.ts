@@ -43,6 +43,10 @@ export class HomeComponent implements OnInit {
   router=inject(Router);
   currencyService= inject(CurrencyService);
   userService = inject(UserService);
+
+  cpanel(){
+    this.router.navigate(['admin'])
+  }
   
   logOut(){
       this.auth.logOut()
@@ -61,6 +65,8 @@ export class HomeComponent implements OnInit {
       this.enlaceActivo = 'Cuenta';
   } else if (option === 'Conversor' && this.enlaceActivo !== 'Conversor') {
       this.enlaceActivo = 'Conversor';
+  }else if(option==='CPanel'){
+    this.router.navigate(['admin'])
   }
   }
   ngOnInit(): void {
@@ -81,7 +87,7 @@ export class HomeComponent implements OnInit {
     const token = localStorage.getItem('token');
     
     if (token) {
-      // Decodificar el token (asumiendo que es un token JWT)
+      // Decodificar el token
       const tokenData = this.parseJwt(token);
 
       // Extraer el nombre de usuario del token y asignarlo a la propiedad user.Username

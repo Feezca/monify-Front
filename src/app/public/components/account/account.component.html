@@ -1,10 +1,11 @@
 <div class="container">
     <h2>Mi cuenta</h2>
     <p class="items">Tipo de suscripción: <span class="usersInfo">{{nivelSuscripcion}}</span></p>
-    <p class="items">Conversiones realizadas: <span class="usersInfo">{{user.conversions}}</span> </p>
-    <div class="renovaciones">
-        <button class="btnRenovar" (click)="updatePlan()"> Renovar mi plan</button>
-        <button class="btnRenovar" (click)="upgradePlan()"> Mejorar mi plan</button>
+    <div class="planes">
+        <button (click)="setPlan(0)" class="btnRenovar">Free</button>
+        <button (click)="setPlan(1)" class="btnRenovar">Trial</button>
+        <button (click)="setPlan(2)" class="btnRenovar">Pro</button>
     </div>
+    <p class="items">Conversiones restantes: <span class="usersInfo">{{user.conversions}}</span> </p>
     <button class="btnSaveOut" (click)="save()"> Guardar y salir</button>
 </div>

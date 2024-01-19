@@ -2,11 +2,15 @@
     <div class="home">   
         <h1>Bienvenido, {{user.username}}</h1>
         <app-card-conversor 
-        *ngIf="enlaceActivo ==='Conversor'"
+        class="puff-in-center"
+        *ngIf="enlaceActivo ==='Conversor' && user.conversions > 0"
         [currency]="currency"
         [user]="user">
         </app-card-conversor>
-        <app-account *ngIf="enlaceActivo==='Cuenta'" 
+        <h2 *ngIf="user.conversions < 1">Ya no tienes conversiones disponibles, revisa tu plan en "Mi Cuenta"</h2>
+        <app-account
+        class="puff-in-center"
+        *ngIf="enlaceActivo==='Cuenta'" 
         [user]="user">
         </app-account>
     </div>
@@ -17,6 +21,7 @@
                 <option class="opcion" >{{user.username}}</option>
                 <option class="opcion"  *ngIf="enlaceActivo==='Conversor'" >Mi cuenta</option>
                 <option class="opcion"  *ngIf="enlaceActivo==='Cuenta'" >Conversor</option>
+                <option class="opcion"  *ngIf="user.role === 'Admin'" value="CPanel" >CPanel</option>
                 <option class="opcion"   >Cerrar sesión</option>
             </select>
         </div>
