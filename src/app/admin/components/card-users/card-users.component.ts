@@ -32,12 +32,9 @@ export class CardUsersComponent {
       this.deleteUser.id= this.user.id;
       this.deleteUser.userState=this.user.state;
       await this.userService.updateState(this.deleteUser);
-      window.location.reload();
-      console.log(this.deleteUser)
-      
+      window.location.reload();      
     }catch(err){
       console.error(err)
     }
-      // window.location.reload();
   }
 }

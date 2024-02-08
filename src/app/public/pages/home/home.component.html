@@ -1,5 +1,5 @@
 <div id="container">    
-    <div class="home">   
+    <div *ngIf="user.state===0" class="home">   
         <h1>Bienvenido, {{user.username}}</h1>
         <app-card-conversor 
         class="puff-in-center"
@@ -14,9 +14,13 @@
         [user]="user">
         </app-account>
     </div>
-    <div class="background-container">
+    <div *ngIf="user.state===1">
+        <h1>Tu cuenta ha sido dada de baja, vuelve a registrarte</h1>
+        <button class="registerBtn"  [routerLink]="(['/register'])">Registrarme</button>
+    </div>
+    <div class="background-container" >
         <img class="floatLogo" src="./../../../../assets/img/Monify_svg_white.svg" alt="">  
-        <div>
+        <div *ngIf="user.state === 0">
             <select id="opcionesDropdown" class="floatButton"  (change)="selectComponent($event)" name="opcionesDropdown">
                 <option class="opcion" >{{user.username}}</option>
                 <option class="opcion"  *ngIf="enlaceActivo==='Conversor'" >Mi cuenta</option>
@@ -27,3 +31,4 @@
         </div>
     </div>
 </div>
+
