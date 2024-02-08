@@ -20,6 +20,11 @@ export interface updateUserPlan{
     plan:number
 }
 
+export interface deleteUser{
+    id:number,
+    userState:number
+}
+
 
 export interface LoginData {
     Username: string,

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { User, updateUserPlan } from '../interfaces/user';
+import { User, deleteUser, updateUserPlan } from '../interfaces/user';
 import { API } from '../constants/api';
 
 @Injectable({
@@ -21,6 +21,21 @@ export class UserService extends ApiService {
         })
           return res.ok
     };
+
+    async updateState( user : deleteUser ) : Promise<boolean> {
+      if( !user.id ) 
+        return false;
+        const res = await fetch(API+"User/DeleteUser/"+user.id,{
+          method:'PUT',
+          headers:{
+            "Content-type":"application/json",
+            Authorization: "Bearer "+this.auth.token()
+          },
+          body: JSON.stringify(user)
+        })
+          return res.ok
+    };
+
 
     async getAll(): Promise<User[]> {
       const res = await this.getAuth('User');
