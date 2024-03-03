@@ -15,7 +15,12 @@
     </div>
     <div class="container2">
         <form (ngSubmit)="saveUser()" #form="ngForm">
-            <input  class="dataInput"  [(ngModel)]="user.state" #State="ngModel" type="text" name="State" value="">{{user.state === 0 ? 'Activo' : 'Inactivo'}}
+            <input  class="dataInput"  
+            [(ngModel)]="user.state" 
+            #State="ngModel" 
+            type="text" 
+            name="State" 
+            value="">{{user.state === 0 ? 'Activo' : 'Inactivo'}}
             <button type="submit" value="Guardar" class="btnSubmit" >Guardar</button>
         </form>
         <button type="button" (click)="editUserState()" class="btnDelete">Cambiar</button>

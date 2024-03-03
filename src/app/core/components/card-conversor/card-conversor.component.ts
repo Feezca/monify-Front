@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Currency } from '../../interfaces/currency';
+import { Currency, CurrencyConversion } from '../../interfaces/currency';
 import { CurrencyService } from '../../services/currency.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../interfaces/user';
@@ -18,16 +18,22 @@ export class CardConversorComponent implements OnInit{
 @Input({required:true}) currency!:Currency;
 @Input({required : true}) user!:User;
 
+currencyConversion :  CurrencyConversion ={
+  UserId: 0,
+  ConvertibilityIndexIn: 0,
+  ConvertibilityIndexOut: 0,
+  Amount: 0
+}
+
 userService = inject(UserService);
 currencyService= inject(CurrencyService);
-// Declarar un arreglo para almacenar las monedas disponibles
+
 currencies: Currency []= []
 
-// Declarar variables para guardar los valores de entrada y salida
-valorConvertido:string='';
-valorAConvertir:number=0;
 
-// Declarar variables para guardar las opciones seleccionadas por el usuario
+valorConvertido:string= '';
+
+
 opcionSeleccionadaIngreso:any;
 opcionSeleccionadaEgreso:any;
 
@@ -43,41 +49,22 @@ seleccionarMonedaDestino(e:any){
 
 // Definir una función para realizar la conversión de monedas y mostrar el resultado
 convert(){
-  try {  
-      // Verificar que la opción seleccionada por el usuario sea válida
-      if (this.opcionSeleccionadaIngreso>=0) {
-        // Calcular el valor convertido según la tasa de cambio seleccionada y mostrarlo en el input de destino
-        const resultado = (this.valorAConvertir * this.opcionSeleccionadaEgreso)/this.opcionSeleccionadaIngreso;
-        this.valorConvertido = resultado.toFixed(2);
+    if (this.opcionSeleccionadaIngreso>=0) {
+      // Asignar los valores
+      this.currencyConversion.ConvertibilityIndexIn = parseFloat(this.opcionSeleccionadaIngreso) 
+      this.currencyConversion.ConvertibilityIndexOut = parseFloat(this.opcionSeleccionadaEgreso) 
+      this.currencyConversion.UserId=this.user.id;
 
-
-        const userId=this.user.id;
-         // Llamada a la función de incrementarContadorConversiones
-      this.userService.incrementarContadorConversiones(userId)
-      .then((success) => {
-        if (success) {
-          console.log('Contador de conversiones incrementado con éxito.');
-        } else {
-          console.error('Error al incrementar el contador de conversiones.');
-        }
-      })  
-      .catch((error) => {
-        console.error('Error al llamar a incrementarContadorConversiones:', error);
-      });
-      } else {
-        // Lanzar un error si la opción seleccionada por el usuario no es válida
-        throw new Error('Índice de convertibilidad no definido.');
-      }
-    } catch (error:any) {
-      // Mostrar un mensaje de error en la consola si ocurre una excepción
-      console.error('Error en la conversión:', error.message);
-    }
+      this.currencyService.Conversion(this.currencyConversion)
+      .then((res)=>{
+        this.valorConvertido = res.toFixed(2);
+    })
   }
+}
 
 
 async ngOnInit():Promise<void> {
   this.currencies = await this.currencyService.getAll();
-  console.log('Currencies cargados:', this.currencies);
 } catch (error:any) {
   console.error('Error al cargar currencies:', error);
 }

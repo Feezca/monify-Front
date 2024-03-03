@@ -1,6 +1,6 @@
 
 import { Injectable} from '@angular/core';
-import { Currency, CurrencyForCreation } from '../interfaces/currency';
+import { Currency, CurrencyConversion, CurrencyForCreation } from '../interfaces/currency';
 import { API } from '../constants/api';
 import { ApiService } from './api.service';
 
@@ -44,6 +44,18 @@ export class CurrencyService extends ApiService {
     return res.ok
   };
 
+  async Conversion( dto : CurrencyConversion):Promise<number>{
+    const res = await fetch(API +"Currency/"+ dto.UserId,{
+      method: 'POST',
+      headers:{
+        "Content-Type":"application/json",
+        Authorization : "Bearer "+ this.auth.token(),
+      },
+      body: JSON.stringify(dto)
+    });
+    const result = await res.json();
+    return result as number;
+  }
 
 
   async getAll():Promise<Currency[]>{

@@ -5,16 +5,34 @@
         <form #loginForm="ngForm" (ngSubmit)="login()">
             <div class="inputBox">
                 <img class="inputIcon" src="../../../../assets/img/user.svg" alt="">
-                <input class="input" type="text" name="user" id="user" [(ngModel)]="loginData.Username" #username="ngModel"
-                placeholder="Usuario" autocomplete="username"
-                required>
+                <input 
+                class="input" 
+                type="text" 
+                name="user" 
+                id="user" 
+                [(ngModel)]="loginData.Username" 
+                #username="ngModel"
+                placeholder="Usuario" 
+                autocomplete="username"
+                minlength="5"
+                required="true">
             </div>
+            <p class="errorMsg" *ngIf="username.invalid && username.dirty">El nombre de usuario debe tener al menos 5 caracteres.</p>
             <div class="inputBox">
                 <img class="inputIcon" src="../../../../assets/img/lock.svg" alt="">
-                <input class="input" type="password" name="password" id="password" [(ngModel)]="loginData.Password" #password="ngModel"
-                placeholder="Contraseña" autocomplete="password"
-                required>
+                <input 
+                class="input" 
+                type="password" 
+                name="password" 
+                id="password" 
+                [(ngModel)]="loginData.Password" 
+                #password="ngModel"
+                placeholder="Contraseña" 
+                autocomplete="password"
+                minlength="6"
+                required="true">
             </div>
+            <p class="errorMsg" *ngIf="password.invalid && password.dirty">La contraseña debe tener al menos 6 caracteres.</p>
             <button type="submit" [disabled]="loginForm.invalid" >Iniciar sesión</button>
             <p *ngIf="errorLogin()" class="error">Error al iniciar sesión</p    >
             <p class="registerPara">No tenés cuenta? <a class="registerLink" [routerLink]="['/register']">Registrate</a> </p>

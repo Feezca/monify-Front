@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
       this.enlaceActivo = 'Cuenta';
   } else if (option === 'Conversor' && this.enlaceActivo !== 'Conversor') {
       this.enlaceActivo = 'Conversor';
-  }else if(option==='CPanel'){
+  }else if(option==='Dashboard'){
     this.router.navigate(['admin'])
   }
   }

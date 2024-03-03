@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { User, updateUserPlan } from 'src/app/core/interfaces/user';
 import { UserService } from 'src/app/core/services/user.service';
 import { Router } from '@angular/router';
-import { identifierName } from '@angular/compiler';
-import { catchError } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-account',
@@ -30,7 +29,6 @@ userUpdater: updateUserPlan={
 
 suscription(){
   this.nivelSuscripcion = this.suscripcion[this.user.plan];
-
 }
 
 async setPlan(selectedPlan:number){
@@ -52,16 +50,30 @@ async setPlan(selectedPlan:number){
       default:
         break;
     }      
-    console.log(this.userUpdater);
-    await this.userService.updatePlan(this.userUpdater);
-    alert('Se ha mejorado el plan.');
+    const result= await this.userService.updatePlan(this.userUpdater);
+    if(result){
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Tu plan fue modificado con éxito!",
+        showConfirmButton: false,
+        timer: 1800
+      });
+    }
   } catch (error) {
     console.error('Error al mejorar el plan:', error);
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "Error!",
+      text:"Al parecer hubo un error al modificar tu plan. Intenta más tarde.",
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
 }
 
-
-save(){
+salir(){
   window.location.reload();
 }
 

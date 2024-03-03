@@ -9,11 +9,11 @@
             </p>
             <form (ngSubmit)="editCurrencyIc()" #form="ngForm">
                 <input  class="dataInput" [(ngModel)]="currency.convertibilityIndex" #convertibilityIndex="ngModel" name="convertibilityIndex" type="text" value="{{currency.convertibilityIndex}}">
+                <button type="submit" value="Guardar" class="btnSubmit">Guardar</button>
             </form>
         </div>
     </div>
     <div class="container4">
-        <button type="submit" value="Guardar" class="btnSubmit">Guardar</button>
         <button (click)="deleteCurrency()" class="btnDelete" >Eliminar</button>
     </div>
 </div>

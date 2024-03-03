@@ -25,7 +25,7 @@
                 <option class="opcion" >{{user.username}}</option>
                 <option class="opcion"  *ngIf="enlaceActivo==='Conversor'" >Mi cuenta</option>
                 <option class="opcion"  *ngIf="enlaceActivo==='Cuenta'" >Conversor</option>
-                <option class="opcion"  *ngIf="user.role === 'Admin'" value="CPanel" >CPanel</option>
+                <option class="opcion"  *ngIf="user.role === 'Admin'" value="Dashboard" >Dashboard</option>
                 <option class="opcion"   >Cerrar sesión</option>
             </select>
         </div>

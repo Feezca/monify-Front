@@ -48,6 +48,10 @@
     overflow: hidden;
     position: relative;
 }
+.errorMsg{
+    font-size: .9rem;
+    opacity: .8;
+}
 span{
     color: variables.$colorPrincipal;
 }

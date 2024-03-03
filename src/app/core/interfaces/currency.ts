@@ -11,3 +11,10 @@ export interface CurrencyForCreation{
     name: string;
     convertibilityIndex:number;
 }
+
+export interface CurrencyConversion{
+    ConvertibilityIndexIn : number,
+    ConvertibilityIndexOut : number,
+    Amount : number,
+    UserId: number
+}
